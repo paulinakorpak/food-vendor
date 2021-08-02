@@ -3,22 +3,28 @@ import { useSelector } from 'react-redux';
 import Form from './features/foodAdvisor/components/Form';
 import Menu from './features/foodAdvisor/components/Menu';
 import { selectCreatureCount, selectJourneyLength } from './features/foodAdvisor/foodAdvisorSlice';
+import prepareFoodForUnexpectedJourney from './features/foodAdvisor/service/foodAdvisor';
 
 function App() {
   const journeyLength = useSelector(selectJourneyLength);
   const creaturesCount = useSelector(selectCreatureCount);
 
-  const showMenu = journeyLength > 0 && Object.values(creaturesCount).some((count) => count > 0);
+  let menu = null;
+  const creatureExists = Object.values(creaturesCount).some((count) => count > 0);
+
+  if (journeyLength > 0 && creatureExists) {
+    menu = prepareFoodForUnexpectedJourney(journeyLength, creaturesCount);
+  }
 
   return (
     <div className="container">
       <h1>Food Vendor</h1>
       <Form />
       {
-        showMenu && (
+        menu && (
           <>
             <div className="space" />
-            <Menu />
+            <Menu menu={menu} />
           </>
         )
       }
