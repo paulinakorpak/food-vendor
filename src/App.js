@@ -1,9 +1,14 @@
 import React from 'react';
+import Form from './features/foodAdvisor/components/Form';
+import Menu from './features/foodAdvisor/components/Menu';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <h1>Food Vendor</h1>
+      <Form />
+      <div className="space" />
+      <Menu />
     </div>
   );
 }

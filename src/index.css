@@ -1,3 +1,137 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+    @apply md:container md:mx-auto h-screen flex flex-col items-center p-10 font-sans;
+}
+
+h1 {
+    @apply text-4xl font-medium font-mono text-gray-400 mb-10;
+}
+
+.creatures {
+    @apply flex justify-between w-full h-36 mb-6;
+}
+
+@media (min-width: 640px) {
+    .creatures {
+        @apply w-1/2;
+    }
+}
+
+.creature{
+    @apply flex flex-col items-center justify-end w-1/3 m-2;
+}
+
+@media (min-width: 640px) {
+    .creature {
+        @apply flex-row self-end justify-center;
+    }
+}
+
+.creature-menu {
+    @apply mb-3;
+}
+
+.creature-name {
+    @apply text-sm text-gray-400 uppercase;
+}
+
+.creature-photo {
+    @apply flex justify-center items-center w-11 h-16 mr-1 mb-2;
+}
+
+@media (min-width: 640px) {
+    .creature-photo {
+        @apply w-16 h-24 mr-2 mb-0 ;
+    }
+}
+
+.creature-photo-wizard {
+    @apply h-28;
+}
+
+@media (min-width: 640px) {
+    .creature-photo-wizard {
+        @apply h-32;
+    }
+}
+
+.creature-quantity{
+    @apply self-center w-12 p-1 border-2 border-gray-200 rounded-md text-sm;
+}
+
+@media (min-width: 640px) {
+    .creature-quantity {
+        @apply self-end;
+    }
+}
+
+.input{
+    @apply w-full p-2 border-2 border-gray-200 rounded-md;
+}
+
+@media (min-width: 640px) {
+    .input {
+        @apply w-1/2;
+    }
+}
+
+.space {
+    @apply w-full h-0.5 bg-gray-300 my-5;
+}
+
+@media (min-width: 640px) {
+    .space {
+        @apply w-1/2;
+    }
+}
+
+.days {
+    @apply flex flex-col w-full p-2;
+}
+
+@media (min-width: 640px) {
+    .days {
+        @apply w-1/2;
+    }
+}
+
+.checkbox {
+    @apply flex justify-end items-center w-full p-1 mb-4;
+}
+
+@media (min-width: 640px) {
+    .checkbox {
+        @apply w-1/2;
+    }
+}
+
+.checkbox-text {
+    @apply mr-3 text-sm text-gray-400;
+}
+
+.day {
+    @apply flex mb-2;
+}
+
+.title {
+    @apply flex justify-start items-start pt-3 w-1/6 font-medium text-gray-400 uppercase;
+}
+
+.menu {
+    @apply flex flex-col flex-grow p-3 ml-2 border-2 border-gray-200 rounded-md;
+}
+
+.dish {
+    @apply flex m-0.5 text-gray-700;
+}
+
+.dish-quantity {
+    @apply flex items-center w-1/5 text-sm;
+}
+
+.dish-name {
+    @apply flex items-center w-full text-sm;
+}
