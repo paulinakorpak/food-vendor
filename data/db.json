@@ -1,0 +1,115 @@
+{
+  "dishes": [
+    {
+      "id": 0,
+      "name": "Scrambled eggs",
+      "ingredients": [0, 0],
+      "kcal": 140
+    },
+    {
+      "id": 1,
+      "name": "Soft-boiled egg",
+      "ingredients": [0],
+      "kcal": 70
+    },
+    {
+      "id": 2,
+      "name": "Slice of Lembas Bread",
+      "ingredients": [1],
+      "kcal": 60
+    },
+    {
+      "id": 3,
+      "name": "Po-Tay-To Onion Soup",
+      "ingredients": [1, 2, 3],
+      "kcal": 300
+    },
+    {
+      "id": 4,
+      "name": "Balin's Spiced Beef",
+      "ingredients": [2, 4, 5],
+      "kcal": 430
+    },
+    {
+      "id": 5,
+      "name": "Mrs. Cotton's Berry Pie",
+      "ingredients": [0, 0, 6, 7],
+      "kcal": 250
+    },
+    {
+      "id": 6,
+      "name": "Frogmorton Flapjack",
+      "ingredients": [0, 0, 7, 8, 9],
+      "kcal": 500
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 0,
+      "name": "Egg",
+      "weight": 0.05
+    },
+    {
+      "id": 1,
+      "name": "Slice of Lembas Bread",
+      "weight": 0.1
+    },
+    {
+      "id": 2,
+      "name": "Onion",
+      "weight": 0.15
+    },
+    {
+      "id": 3,
+      "name": "Cheese",
+      "weight": 0.25
+    },
+    {
+      "id": 4,
+      "name": "Beef",
+      "weight": 0.5
+    },
+    {
+      "id": 5,
+      "name": "Apple",
+      "weight": 0.2
+    },
+    {
+      "id": 6,
+      "name": "Blueberries",
+      "weight": 0.3
+    },
+    {
+      "id": 7,
+      "name": "Flour",
+      "weight": 0.35
+    },
+    {
+      "id": 8,
+      "name": "Butter",
+      "weight": 0.4
+    },
+    {
+      "id": 9,
+      "name": "Porridge oats",
+      "weight": 0.6
+    }
+  ],
+  "creatures": [
+    {
+      "name": "dwarf",
+      "requiredKcal": 2900,
+      "favouriteDishes": [4]
+    },
+    {
+      "name": "hobbit",
+      "requiredKcal": 2700,
+      "favouriteDishes": [1, 5]
+    },
+    {
+      "name": "wizard",
+      "requiredKcal": 3100,
+      "favouriteDishes": [0]
+    }
+  ]
+}
