@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Form from './features/foodAdvisor/components/Form';
 import Menu from './features/foodAdvisor/components/Menu';
@@ -6,15 +6,18 @@ import { selectCreatureCount, selectJourneyLength } from './features/foodAdvisor
 import prepareFoodForUnexpectedJourney from './features/foodAdvisor/service/foodAdvisor';
 
 function App() {
+  const [menu, setMenu] = useState(null);
+
   const journeyLength = useSelector(selectJourneyLength);
   const creaturesCount = useSelector(selectCreatureCount);
 
-  let menu = null;
-  const creatureExists = Object.values(creaturesCount).some((count) => count > 0);
+  useEffect(async () => {
+    const atLeastOneCreature = Object.values(creaturesCount).some((count) => count > 0);
 
-  if (journeyLength > 0 && creatureExists) {
-    menu = prepareFoodForUnexpectedJourney(journeyLength, creaturesCount);
-  }
+    if (journeyLength > 0 && atLeastOneCreature) {
+      setMenu(await prepareFoodForUnexpectedJourney(journeyLength));
+    }
+  }, [journeyLength]);
 
   return (
     <div className="container">
@@ -24,7 +27,7 @@ function App() {
         menu && (
           <>
             <div className="space" />
-            <Menu menu={menu} />
+            <Menu menu={menu} creaturesCount={creaturesCount} />
           </>
         )
       }

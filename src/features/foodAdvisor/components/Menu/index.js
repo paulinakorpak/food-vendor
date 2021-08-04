@@ -1,67 +1,97 @@
-import React from 'react';
+/* eslint-disable no-shadow */
 
-function Menu() {
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+function Menu({ menu, creaturesCount }) {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleShowDetailsChange = () => {
+    setShowDetails(!showDetails);
+  };
+
+  const renderMenuByCreature = (menu) => Object.entries(menu).map(
+    ([creatureName, creatureMenu]) => (
+      <li key={creatureName} className="creature-menu">
+        <p className="creature-name">{creatureName}</p>
+        <ul>
+          {
+            Object.entries(creatureMenu).map(
+              ([dishName, dishQuantity]) => (
+                <li key={dishName} className="dish">
+                  <div className="dish-quantity">
+                    {`${dishQuantity * creaturesCount[creatureName]} x`}
+                  </div>
+                  <div className="dish-name">{dishName}</div>
+                </li>
+              ),
+            )
+          }
+        </ul>
+      </li>
+    ),
+  );
+
+  const renderAccumulatedMenu = (menu) => {
+    const accumulatedMenu = {};
+
+    Object.entries(menu).forEach(
+      ([creatureName, creatureMenu]) => Object.entries(creatureMenu).forEach(
+        ([dishName, dishQuantity]) => {
+          dishQuantity *= creaturesCount[creatureName];
+          accumulatedMenu[dishName] = accumulatedMenu[dishName] + dishQuantity || dishQuantity;
+        },
+      ),
+    );
+
+    return Object.entries(accumulatedMenu).map(
+      ([dishName, dishQuantity]) => (
+        <li key={dishName} className="dish">
+          <div className="dish-quantity">
+            {dishQuantity}
+            {' '}
+            x
+          </div>
+          <div className="dish-name">{dishName}</div>
+        </li>
+      ),
+    );
+  };
+
   return (
     <>
       <div className="checkbox">
         <p className="checkbox-text">Show details</p>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          onChange={handleShowDetailsChange}
+        />
       </div>
       <ul className="days">
-        <li className="day">
-          <div className="title">Day 1</div>
-          <ul className="dishes">
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Scrambled eggs</div>
+        {
+          menu.map((day) => (
+            <li key={day.title} className="day">
+              <div className="title">
+                {day.title}
+              </div>
+              <ul className="menu">
+                {
+                  showDetails
+                    ? renderMenuByCreature(day.menu)
+                    : renderAccumulatedMenu(day.menu)
+                }
+              </ul>
             </li>
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Soft-boiled egg</div>
-            </li>
-            <li className="dish">
-              <div className="dish-quantity">4 x </div>
-              <div className="dish-name">Slice of Lembas Bread</div>
-            </li>
-          </ul>
-        </li>
-        <li className="day">
-          <div className="title">Day 2</div>
-          <ul className="dishes">
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Scrambled eggs</div>
-            </li>
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Soft-boiled egg</div>
-            </li>
-            <li className="dish">
-              <div className="dish-quantity">4 x </div>
-              <div className="dish-name">Slice of Lembas Bread</div>
-            </li>
-          </ul>
-        </li>
-        <li className="day">
-          <div className="title">Day 3</div>
-          <ul className="dishes">
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Scrambled eggs</div>
-            </li>
-            <li className="dish">
-              <div className="dish-quantity">2 x </div>
-              <div className="dish-name">Soft-boiled egg</div>
-            </li>
-            <li className="dish">
-              <div className="dish-quantity">4 x </div>
-              <div className="dish-name">Slice of Lembas Bread</div>
-            </li>
-          </ul>
-        </li>
+          ))
+        }
       </ul>
     </>
   );
 }
 
 export default Menu;
+
+Menu.propTypes = {
+  menu: PropTypes.arrayOf(PropTypes.object).isRequired,
+  creaturesCount: PropTypes.objectOf(PropTypes.number).isRequired,
+};
