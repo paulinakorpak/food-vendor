@@ -1,5 +1,30 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Algorithm
+
+Read more about the [algorithm](doc/algorithm.md).
+
+## Installation
+
+To install the project, follow these steps:
+
+```
+yarn install
+```
+
+## Getting started
+
+To run the project, follow these steps:
+
+```
+// Run in separated shells
+
+yarn start
+yarn api
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the project in the browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -11,6 +36,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `yarn api`
+
+Imitates REST server.<br />
+Exposes endpoints on [http://localhost:3001](http://localhost:3001).
+
 
 ### `yarn test`
 
