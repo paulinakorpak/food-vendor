@@ -78,16 +78,6 @@ h1 {
     }
 }
 
-.space {
-    @apply w-full h-0.5 bg-gray-300 my-5;
-}
-
-@media (min-width: 640px) {
-    .space {
-        @apply w-1/2;
-    }
-}
-
 .days {
     @apply flex flex-col w-full p-2;
 }

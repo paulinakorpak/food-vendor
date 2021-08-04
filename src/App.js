@@ -26,7 +26,6 @@ function App() {
       {
         menu && (
           <>
-            <div className="space" />
             <Menu menu={menu} creaturesCount={creaturesCount} />
           </>
         )
